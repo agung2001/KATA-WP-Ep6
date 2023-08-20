@@ -57,7 +57,22 @@ function youtube_container_shortcode( $atts, $content = null ) {
         $atts
     );
 
+    // Shortcode with filtered content
+    $content = apply_filters( 'youtube_container_shortcode_content', $content );
+
     // Include container template
     include plugin_dir_path( 'template/container.php' );
 }
 add_shortcode( 'youtube_container', 'youtube_container_shortcode' );
+
+/**
+ * Filter YouTube container shortcode content
+ */
+function youtube_container_filter( $content ) {
+    // Add paragraph
+    $content .= '<p>Thanks for watching!</p>';
+
+    // Return filtered content
+    return $content;
+}
+//add_filter('youtube_container_shortcode_content', 'youtube_container_filter');
