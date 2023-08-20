@@ -1,6 +1,6 @@
 # Kata WordPress - Episode 6
 
-[![Watch the video](https://img.youtube.com/vi/9UKf_sDWx6g/maxresdefault.jpg)](https://www.youtube.com/watch?v=QyXq8WTo2bM)
+[![Watch the video](https://img.youtube.com/vi/QyXq8WTo2bM/maxresdefault.jpg)](https://www.youtube.com/watch?v=QyXq8WTo2bM)
 
 ### Simple shortcode
 ```
