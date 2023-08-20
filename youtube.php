@@ -20,26 +20,24 @@
  */
 function youtube_shortcode( $atts, $content = null ) {
     // Simple shortcode
-    return 'Hello YouTube!';
+    // return 'Hello YouTube!';
+
+    // Shortcode with default parameters
+    //$default = array(
+    //    'id'     => 'abc123', // Default video ID
+    //    'width'  => 640, // Default video width
+    //    'height' => 480, // Default video height
+    //);
+    //$atts = shortcode_atts( $default, $atts );
 
     // Shortcode with parameters
     // return 'Hello YouTube! The video ID is ' . $atts['id'];
-
-    // Shortcode with default parameters
-//    $atts = shortcode_atts(
-//        array(
-//			'id'     => 'abc123',
-//			'width'  => 640,
-//			'height' => 480,
-//        ),
-//        $atts
-//    );
 
     // Shortcode with parameters and content
     // return 'Hello YouTube! The video ID is ' . $atts['id'] . '. The content is ' . $content;
 
     // Shortcode with parameters and YouTube video
-    // return '<iframe width="' . $atts['width'] . '" height="' . $atts['height'] . '" src="https://www.youtube.com/embed/' . $atts['id'] . '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+    return '<iframe width="' . $atts['width'] . '" height="' . $atts['height'] . '" src="https://www.youtube.com/embed/' . $atts['id'] . '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
 }
 add_shortcode( 'youtube', 'youtube_shortcode' );
 
@@ -49,19 +47,17 @@ add_shortcode( 'youtube', 'youtube_shortcode' );
  */
 function youtube_container_shortcode( $atts, $content = null ) {
     // Default shortcode parameters
-    $atts = shortcode_atts(
-        array(
-			'title'       => 'YouTube video',
-			'description' => 'Just another YouTube video',
-        ),
-        $atts
+    $default = array(
+        'title'       => 'YouTube video',
+        'description' => 'Just another YouTube video',
     );
+    $atts = shortcode_atts( $default, $atts );
 
     // Shortcode with filtered content
     $content = apply_filters( 'youtube_container_shortcode_content', $content );
 
     // Include container template
-    include plugin_dir_path( 'template/container.php' );
+    include plugin_dir_path( __FILE__ ) . 'template/container.php';
 }
 add_shortcode( 'youtube_container', 'youtube_container_shortcode' );
 
@@ -75,4 +71,4 @@ function youtube_container_filter( $content ) {
     // Return filtered content
     return $content;
 }
-//add_filter('youtube_container_shortcode_content', 'youtube_container_filter');
+add_filter('youtube_container_shortcode_content', 'youtube_container_filter');
